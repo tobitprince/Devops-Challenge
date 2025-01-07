@@ -1,4 +1,5 @@
 import os
+import time
 import json
 import boto3
 import requests
@@ -83,12 +84,24 @@ def main():
     # create a bucket if it does not exist
     dashboard.create_bucket_if_not_exists()
 
-    cities = ["Nairobi", "Mombasa", "Kisumu", "Eldoret", "Nakuru"]
+    # cities = ["Nairobi", "Mombasa", "Kisumu", "Eldoret", "Nakuru"]
 
-    for city in cities:
-        print(f"Fetching weather data for {city}")
+
+    while True:
+        os.system('cls')
+        print("Welcome to the Weather Dashboard!".center(60, "-"))
+        city = input("Enter City Name: ").title()
+        if city == "Exit":
+            break
+
+        os.system("cls")
+        for x in range(5):
+            print(f"Fetching weather data for {city}{x * '.'}")
+            time.sleep(0.5)
+            os.system('cls')
         weather_data = dashboard.get_weather_data(city)
         if weather_data:
+            print(f"The Weather for {city.capitalize()}".center(50, "-"))
             temp = weather_data['main']['temp']
             feels_like = weather_data['main']['feels_like']
             humidity = weather_data['main']['humidity']
@@ -105,6 +118,9 @@ def main():
                 print(f"Weather data for {city} saved to S3!")
         else:
             print(f"Failed to fetch weather data for {city}")
+
+        time.sleep(5)
+
 
 
 if __name__ == "__main__":
