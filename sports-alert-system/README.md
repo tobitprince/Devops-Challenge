@@ -86,7 +86,7 @@ cd sports-alert-system
 4. Replace REGION and ACCOUNT_ID with your AWS region and account ID.
 5. Click Next: Tags (you can skip adding tags).
 6. Click Next: Review.
-7. Enter a name for the policy (e.g., gd_sns_policy).
+7. Enter a name for the policy (e.g., sports-alert-policy).
 8. Review and click Create Policy.
 
 ### **Create an IAM Role for Lambda**
@@ -94,11 +94,11 @@ cd sports-alert-system
 2. Click Roles → Create Role.
 3. Select AWS Service and choose Lambda.
 4. Attach the following policies:
-- SNS Publish Policy (gd_sns_policy) (created in the previous step).
+- SNS Publish Policy (sports-alert-policy) (created in the previous step).
 - Lambda Basic Execution Role (AWSLambdaBasicExecutionRole) (an AWS managed policy).
 5. Click Next: Tags (you can skip adding tags).
 6. Click Next: Review.
-7. Enter a name for the role (e.g., gd_role).
+7. Enter a name for the role (e.g., sports-alert-role).
 8. Review and click Create Role.
 9. Copy and save the ARN of the role for use in the Lambda function.
 
@@ -108,9 +108,9 @@ cd sports-alert-system
 3. Select Author from Scratch.
 4. Enter a function name (e.g., gd_notifications).
 5. Choose Python 3.x as the runtime.
-6. Assign the IAM role created earlier (gd_role) to the function.
+6. Assign the IAM role created earlier (sports-alert-role) to the function.
 7. Under the Function Code section:
-- Copy the content of the src/gd_notifications.py file from the repository.
+- Copy the content of the src/sports-alert-system.py file from the repository.
 - Paste it into the inline code editor.
 8. Under the Environment Variables section, add the following:
 - NBA_API_KEY: your NBA API key.
@@ -123,7 +123,7 @@ cd sports-alert-system
 2. Go to Rules → Create Rule.
 3. Select Event Source: Schedule.
 4. Set the cron schedule for when you want updates (e.g., hourly).
-5. Under Targets, select the Lambda function (gd_notifications) and save the rule.
+5. Under Targets, select the Lambda function (sports-alert) and save the rule.
 
 
 ### **Test the System**

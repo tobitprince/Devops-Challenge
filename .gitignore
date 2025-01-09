@@ -2,3 +2,10 @@ weather-dashboard/.env
 weather-dashboard/__pycache__/
 weather-dashboard/*.zip
 weather-dashboard/weatherenv
+
+
+
+sports-alert-system/.env
+sports-alert-system/__pycache__/
+sports-alert-system/*.zip
+sports-alert-system/sportsenv
